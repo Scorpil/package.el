@@ -87,8 +87,10 @@
 ;; currently register any of these, so this feature does not actually
 ;; work.)
 
-;; This code supports a single package repository, ELPA.  All packages
-;; must be registered there.
+;; This code supports a single package repository out of the box,
+;; ELPA.  Additional repositories may be added by appending to the
+;; package-archives alist.  To run your own package archive, see the
+;; package-maint.el library included.
 
 ;; A package is described by its name and version.  The distribution
 ;; format is either  a tar file or a single .el file.
@@ -111,7 +113,7 @@
 
 ;; Conceptually a package has multiple state transitions:
 ;;
-;; * Download.  Fetching the package from ELPA.
+;; * Download.  Fetching the package from its source.
 ;; * Install.  Untar the package, or write the .el file, into
 ;;   ~/.emacs.d/elpa/ directory.
 ;; * Byte compile.  Currently this phase is done during install,
@@ -1442,5 +1444,4 @@ The list is displayed in a buffer named `*Packages*'."
               :help "Install or uninstall additional Emacs packages"))
 
 (provide 'package)
-
 ;;; package.el ends here

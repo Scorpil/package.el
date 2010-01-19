@@ -5,11 +5,16 @@ The one, the only, the legendary package.el. The magic behind ELPA.
 This repository exists to polish package.el for its submission into
 Emacs proper.
 
+## New Features
+
+* Automate maintenance of package archive by polling a list of git
+  repositories. See header comments in package-maint.el for details.
+
+* Support for multiple archive sources.
+
 ## TODO
 
-* Mechanism for allowing package authors to upload new versions.
-
-* Allow the user to specify multiple archive sources.
+* Allow multi-file packages in package-maint.el.
 
 * Lock the archive while it's being rebuilt to avoid stomping on
   another process.
