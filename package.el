@@ -716,7 +716,7 @@ new."
         ;; Version 1 of 'archive-contents' is identical to our
         ;; internal representation.
         ;; TODO: merge archive lists
-        (dolist (package archive-contents)
+        (dolist (package (cdr archive-contents))
           (package--add-to-archive-contents package archive)))))
 
 (defun package--add-to-archive-contents (package archive)
