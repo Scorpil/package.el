@@ -509,6 +509,10 @@ package archive."
       (let ((load-path (cons pkg-dir load-path)))
         (byte-recompile-directory pkg-dir 0 t)))))
 
+(defun package-write-file-no-coding (file-name excl)
+  (let ((buffer-file-coding-system 'no-conversion))
+    (write-region (point-min) (point-max) file-name nil nil nil excl)))
+
 (defun package-unpack-single (file-name version desc requires)
   "Install the contents of the current buffer as a package.
 
@@ -524,14 +528,11 @@ REQUIRES is a list of symbols which this package needs to run."
   (let* ((dir (file-name-as-directory package-user-dir)))
     ;; Special case "package".
     (if (string= file-name "package")
-        (write-region (point-min) (point-max) (concat dir file-name ".el")
-                      nil nil nil nil)
+        (package-write-file-no-coding (concat dir file-name ".el") nil)
       (let ((pkg-dir (file-name-as-directory
                       (concat dir file-name "-" version))))
         (make-directory pkg-dir t)
-        (write-region (point-min) (point-max)
-                      (concat pkg-dir file-name ".el")
-                      nil nil nil 'excl)
+        (package-write-file-no-coding (concat pkg-dir file-name ".el") 'excl)
         (let ((print-level nil)
               (print-length nil))
           (write-region
