@@ -1,5 +1,9 @@
 # Package.el
 
+**NOTICE** package.el is part of Emacs 24 now; this repository is
+deprecated. You can get the latest at http://bit.ly/pkg-el while the
+last version that's compatible with Emacs 23 is at http://bit.ly/pkg-el23
+
 The one, the only, the legendary package.el. The magic behind ELPA.
 
 This repository exists to polish package.el for its submission into
